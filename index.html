@@ -9,18 +9,18 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #05050a;
-  --s1: #0e0e18;
-  --s2: #141420;
-  --border: #1f1f30;
-  --text: #f0ece4;
-  --muted: #4a4a6a;
-  --gold: #f5c842;
-  --gold2: #e8a020;
-  --blue: #4f9cf0;
-  --green: #3dd68c;
-  --red: #f05050;
-  --purple: #9b6dff;
+  --bg: #f5f4f0;
+  --s1: #ffffff;
+  --s2: #eeecea;
+  --border: #ddd9d0;
+  --text: #1a1814;
+  --muted: #9990a8;
+  --gold: #c07a10;
+  --gold2: #a86208;
+  --blue: #1a6fd4;
+  --green: #1a9e5c;
+  --red: #d43030;
+  --purple: #6b3fd4;
 }
 
 body {
@@ -42,21 +42,21 @@ overflow: hidden;
 .hdr-bg {
 position: absolute; inset: 0;
 background:
-radial-gradient(ellipse at 20% 50%, #f5c84212 0%, transparent 55%),
-radial-gradient(ellipse at 80% 20%, #4f9cf010 0%, transparent 55%),
-linear-gradient(180deg, #0e0e18 0%, #05050a 100%);
+radial-gradient(ellipse at 20% 50%, #c07a1012 0%, transparent 55%),
+radial-gradient(ellipse at 80% 20%, #1a6fd410 0%, transparent 55%),
+linear-gradient(180deg, #eeecea 0%, #f5f4f0 100%);
 }
 .hdr-grid {
 position: absolute; inset: 0;
 background-image: linear-gradient(var(–border) 1px, transparent 1px), linear-gradient(90deg, var(–border) 1px, transparent 1px);
 background-size: 40px 40px;
-opacity: 0.3;
+opacity: 0.6;
 mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
 }
 .hdr-content { position: relative; }
 .eyebrow {
 display: inline-flex; align-items: center; gap: 8px;
-background: #f5c84215; border: 1px solid #f5c84240;
+background: #c07a1015; border: 1px solid #c07a1040;
 border-radius: 30px; padding: 4px 14px;
 font-family: ‘DM Mono’, monospace; font-size: 10px;
 color: var(–gold); letter-spacing: 3px; text-transform: uppercase;
@@ -74,7 +74,7 @@ margin-bottom: 4px;
 }
 .hdr h1 span { color: var(–gold); }
 .hdr-sub {
-font-size: 13px; color: #888; margin-top: 12px;
+font-size: 13px; color: #666; margin-top: 12px;
 line-height: 1.6; font-weight: 400;
 }
 .stats-strip {
@@ -85,20 +85,20 @@ margin-top: 16px; flex-wrap: wrap;
 background: var(–s1); border: 1px solid var(–border);
 border-radius: 30px; padding: 5px 12px;
 font-family: ‘DM Mono’, monospace; font-size: 11px;
-color: #aaa;
+color: #666;
 }
 .stat-pill strong { color: var(–gold); }
 
 /* ─── REALITY CHECK ─── */
 .reality {
 margin: 0 16px 0;
-background: linear-gradient(135deg, #1a1506, #0e0e18);
-border: 1px solid #f5c84230;
+background: linear-gradient(135deg, #fdf6e8, #fff9f0);
+border: 1px solid #c07a1030;
 border-left: 3px solid var(–gold);
 border-radius: 14px;
 padding: 16px;
 font-size: 13px;
-color: #ccc;
+color: #555;
 line-height: 1.75;
 }
 .reality strong { color: var(–gold); }
@@ -170,7 +170,7 @@ font-family: ‘DM Mono’, monospace;
 .day-body.open { display: block; }
 .time-slot {
 display: flex; gap: 12px; padding: 10px 16px;
-border-bottom: 1px solid #0d0d18; align-items: flex-start;
+border-bottom: 1px solid var(–border); align-items: flex-start;
 }
 .time-slot:last-child { border-bottom: none; }
 .slot-time {
@@ -180,7 +180,7 @@ min-width: 52px; padding-top: 2px;
 }
 .slot-content { flex: 1; }
 .slot-label { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
-.slot-detail { font-size: 12px; color: #888; line-height: 1.55; }
+.slot-detail { font-size: 12px; color: #666; line-height: 1.55; }
 .slot-tag {
 display: inline-block; border-radius: 6px;
 padding: 2px 8px; font-size: 10px; font-weight: 700;
@@ -204,7 +204,7 @@ font-size: 10px; font-weight: 700;
 font-family: ‘DM Mono’, monospace; flex-shrink: 0;
 }
 .food-item {
-font-size: 12px; color: #999;
+font-size: 12px; color: #666;
 padding-left: 12px; border-left: 2px solid var(–border);
 margin-bottom: 5px; line-height: 1.5;
 }
@@ -212,20 +212,20 @@ margin-bottom: 5px; line-height: 1.5;
 .food-note { font-size: 11px; color: var(–muted); margin-top: 8px; font-style: italic; }
 
 .totals-box {
-background: linear-gradient(135deg, #0d1a0a, var(–s1));
-border: 1px solid #2a3a20; border-radius: 14px;
+background: linear-gradient(135deg, #eef6ea, #f8fdf6);
+border: 1px solid #b8d4b0; border-radius: 14px;
 padding: 16px; margin-top: 6px;
 }
 .tot-row {
 display: flex; justify-content: space-between;
-font-size: 13px; color: #888; padding: 7px 0;
-border-bottom: 1px solid #1a2a14;
+font-size: 13px; color: #666; padding: 7px 0;
+border-bottom: 1px solid #cde0c8;
 }
 .tot-row:last-of-type { border-bottom: none; }
 .tot-final {
 display: flex; justify-content: space-between;
 padding-top: 10px; margin-top: 6px;
-border-top: 2px solid #2a3a20;
+border-top: 2px solid #b8d4b0;
 }
 
 /* ─── WEIGHTS ─── */
@@ -246,15 +246,15 @@ cursor: pointer;
 .w-body.open { display: block; }
 .ex-row {
 display: flex; justify-content: space-between;
-padding: 11px 16px; border-bottom: 1px solid #0d0d18;
+padding: 11px 16px; border-bottom: 1px solid var(–border);
 font-size: 13px; align-items: flex-start;
 }
 .ex-row:last-of-type { border-bottom: none; }
 .ex-left { flex: 1; }
-.ex-name { color: #ddd; font-weight: 600; }
+.ex-name { color: #333; font-weight: 600; }
 .ex-note { font-size: 11px; color: var(–muted); margin-top: 3px; }
 .ex-sets { color: var(–gold); font-weight: 700; white-space: nowrap; margin-left: 12px; font-family: ‘DM Mono’, monospace; font-size: 12px; }
-.ex-bar { padding: 10px 16px; background: #0a0a14; font-size: 11px; color: #333; border-top: 1px solid var(–border); }
+.ex-bar { padding: 10px 16px; background: var(–bg); font-size: 11px; color: #888; border-top: 1px solid var(–border); }
 
 /* ─── MINDSET / LIFE ─── */
 .pillar-card {
@@ -263,7 +263,7 @@ margin-bottom: 10px; position: relative; overflow: hidden;
 }
 .pillar-icon { font-size: 26px; margin-bottom: 10px; }
 .pillar-title { font-family: ‘Archivo Black’, sans-serif; font-size: 17px; letter-spacing: -0.5px; margin-bottom: 8px; }
-.pillar-text { font-size: 13px; color: #aaa; line-height: 1.8; }
+.pillar-text { font-size: 13px; color: #555; line-height: 1.8; }
 .pillar-text strong { color: var(–text); }
 
 /* ─── PROGRESS ─── */
@@ -278,13 +278,13 @@ font-size: 10px; font-weight: 700;
 font-family: ‘DM Mono’, monospace;
 white-space: nowrap; flex-shrink: 0; margin-top: 2px;
 }
-.m-text { font-size: 13px; color: #999; line-height: 1.65; }
+.m-text { font-size: 13px; color: #666; line-height: 1.65; }
 
 /* ─── CLOSER ─── */
 .closer {
 margin: 0 16px;
-background: linear-gradient(135deg, #141408, #0e0e18);
-border: 1px solid #f5c84222;
+background: linear-gradient(135deg, #fdf8ec, #fffdf5);
+border: 1px solid #c07a1022;
 border-radius: 20px; padding: 24px 20px;
 text-align: center; position: relative; overflow: hidden;
 }
@@ -293,7 +293,7 @@ content: ‘’;
 position: absolute; top: -40px; left: 50%;
 transform: translateX(-50%);
 width: 200px; height: 200px;
-background: radial-gradient(circle, #f5c84215, transparent 70%);
+background: radial-gradient(circle, #c07a1015, transparent 70%);
 pointer-events: none;
 }
 .closer-title {
@@ -302,19 +302,19 @@ font-size: 26px; letter-spacing: -1px;
 line-height: 1.1; margin-bottom: 12px;
 position: relative;
 }
-.closer-text { font-size: 13px; color: #888; line-height: 1.85; position: relative; }
+.closer-text { font-size: 13px; color: #666; line-height: 1.85; position: relative; }
 
 .warn-box {
-background: #1a0808; border: 1px solid #f0505033;
+background: #fff5f5; border: 1px solid #d4303033;
 border-left: 3px solid var(–red);
 border-radius: 12px; padding: 14px 16px;
 margin-bottom: 14px; font-size: 13px;
-color: #ccc; line-height: 1.7;
+color: #555; line-height: 1.7;
 }
 .warn-box strong { color: var(–red); }
 .info-box {
-background: linear-gradient(135deg, #0d1a0a, var(–s1));
-border: 1px solid #2a3a20;
+background: linear-gradient(135deg, #eef6ea, #f8fdf6);
+border: 1px solid #b8d4b0;
 border-radius: 14px; padding: 16px;
 }
 .divider { height: 1px; background: var(–border); margin: 20px 0; }
@@ -517,7 +517,7 @@ border-radius: 14px; padding: 16px;
     </div>
     <div class="time-slot">
       <div class="slot-time">6–8pm</div>
-      <div class="slot-content"><div class="slot-label">📝 ACT/SAT Prep</div><div class="slot-detail">Show up mentally present. This is an investment in your future — same as the gym. <strong style="color:#ddd">Treat it like training.</strong> Do the reps.</div></div>
+      <div class="slot-content"><div class="slot-label">📝 ACT/SAT Prep</div><div class="slot-detail">Show up mentally present. This is an investment in your future — same as the gym. <strong style="color:var(--text)">Treat it like training.</strong> Do the reps.</div></div>
     </div>
     <div class="time-slot">
       <div class="slot-time">~8pm</div>
@@ -718,7 +718,7 @@ border-radius: 14px; padding: 16px;
     </div>
     <div class="time-slot">
       <div class="slot-time">Evening</div>
-      <div class="slot-content"><div class="slot-label">📋 Plan Your Week</div><div class="slot-detail">Spend 15 minutes Sunday night looking at the week ahead. What needs to happen in your business? What are your test prep goals? What are you going to focus on spiritually? <strong style="color:#ddd">Winners plan. Everyone else reacts.</strong></div></div>
+      <div class="slot-content"><div class="slot-label">📋 Plan Your Week</div><div class="slot-detail">Spend 15 minutes Sunday night looking at the week ahead. What needs to happen in your business? What are your test prep goals? What are you going to focus on spiritually? <strong style="color:var(--text)">Winners plan. Everyone else reacts.</strong></div></div>
     </div>
   </div>
 </div>
@@ -954,9 +954,9 @@ border-radius: 14px; padding: 16px;
 
   <div class="info-box" style="margin-top:6px">
     <div class="sec-label" style="color:var(--green);margin-bottom:10px">📈 The Progression System</div>
-    <div style="font-size:13px;color:#aaa;line-height:1.9">
-      <div style="margin-bottom:10px">✅ Hit the <strong style="color:#fff">top rep on all 4 sets</strong> with clean form? Add <strong style="color:var(--green)">5 lbs</strong> next session. That's how you get bigger week by week.</div>
-      <div style="margin-bottom:10px">✅ <strong style="color:#fff">Log every lift in your Notes app.</strong> "RDL — 75 lbs × 10." Do this every night. In 8 weeks you'll have proof of your growth.</div>
+    <div style="font-size:13px;color:#555;line-height:1.9">
+      <div style="margin-bottom:10px">✅ Hit the <strong style="color:var(--text)">top rep on all 4 sets</strong> with clean form? Add <strong style="color:var(--green)">5 lbs</strong> next session. That's how you get bigger week by week.</div>
+      <div style="margin-bottom:10px">✅ <strong style="color:var(--text)">Log every lift in your Notes app.</strong> "RDL — 75 lbs × 10." Do this every night. In 8 weeks you'll have proof of your growth.</div>
       <div>✅ Tournament week, back-to-back heavy days, body feels broken? <strong style="color:var(--gold)">Skip weights. Sleep extra. Eat more.</strong> Recovery IS the workout.</div>
     </div>
   </div>
@@ -968,31 +968,31 @@ border-radius: 14px; padding: 16px;
 
   <div class="sec-label">You're Building More Than a Body</div>
 
-  <div class="pillar-card" style="background:linear-gradient(135deg,#140e05,var(--s1));border:1px solid #f5c84230">
+  <div class="pillar-card" style="background:linear-gradient(135deg,#fdf8ec,#fffef8);border:1px solid #c07a1025">
     <div class="pillar-icon">🙏</div>
     <div class="pillar-title" style="color:var(--gold)">Faith First — Every Morning</div>
     <div class="pillar-text">This isn't decoration in your plan — it's the foundation. Before the gym, before basketball, before your phone: <strong>10 minutes of devotional time every single morning.</strong> Prayer, reading, journaling — whatever your practice is. The days you're tempted to skip it are exactly the days you need it most. A busy schedule isn't a reason to cut it — it's a reason to anchor yourself before the chaos starts.</div>
   </div>
 
-  <div class="pillar-card" style="background:linear-gradient(135deg,#0a0d1a,var(--s1));border:1px solid #4f9cf030">
+  <div class="pillar-card" style="background:linear-gradient(135deg,#f0f4ff,#f8faff);border:1px solid #1a6fd425">
     <div class="pillar-icon">💼</div>
-    <div class="pillar-title" style="color:#4f9cf0">Your Reselling Business — Treat It Like One</div>
+    <div class="pillar-title" style="color:#1a6fd4">Your Reselling Business — Treat It Like One</div>
     <div class="pillar-text">You already have something most people your age don't — an income stream you built yourself. Now it's time to be intentional with it. <strong>Block 30–45 minutes every weekday</strong> — same time, same focus. Sourcing, listing, shipping, customer service, tracking what sells. Saturday is your deep work day — 1–2 hours building and planning. Write down your revenue goal for the 8 weeks. <strong>What you measure, you improve.</strong> Treat your business like a job and it'll pay you like one.</div>
   </div>
 
-  <div class="pillar-card" style="background:linear-gradient(135deg,#0d140a,var(--s1));border:1px solid #3dd68c30">
+  <div class="pillar-card" style="background:linear-gradient(135deg,#f0faf4,#f6fdf8);border:1px solid #1a9e5c25">
     <div class="pillar-icon">📝</div>
     <div class="pillar-title" style="color:var(--green)">ACT/SAT — This Is Athletic Training Too</div>
     <div class="pillar-text">You go to group basketball training twice a week because you know reps make you better. <strong>Test prep is the same thing.</strong> Show up to Tuesday and Thursday prep the same way you show up to the gym — ready to work, not just to be there. Eat before you go. Your brain needs fuel. The score you build over these 8 weeks opens doors your game alone can't. Treat it like the investment it is.</div>
   </div>
 
-  <div class="pillar-card" style="background:linear-gradient(135deg,#140a14,var(--s1));border:1px solid #9b6dff30">
+  <div class="pillar-card" style="background:linear-gradient(135deg,#f5f0ff,#faf8ff);border:1px solid #6b3fd425">
     <div class="pillar-icon">🏀</div>
     <div class="pillar-title" style="color:var(--purple)">Basketball — You're Building a Complete Player</div>
     <div class="pillar-text">At 5'11 and 140 lbs right now, <strong>adding 10 lbs of real muscle will change your game.</strong> You'll be harder to move in the post. Your first step will be more explosive. You'll finish through contact instead of getting knocked off your line. The Bulgarian split squats and box jumps on Fridays are directly for your game — not just aesthetics. Every lift you do is basketball training in disguise.</div>
   </div>
 
-  <div class="pillar-card" style="background:linear-gradient(135deg,#14100a,var(--s1));border:1px solid #f5c84220">
+  <div class="pillar-card" style="background:linear-gradient(135deg,#fdf8ec,#fffef8);border:1px solid #c07a1020">
     <div class="pillar-icon">😴</div>
     <div class="pillar-title" style="color:var(--gold)">Sleep — Your Most Powerful Tool</div>
     <div class="pillar-text">You're growing, training hard, studying, and running a business. <strong>9 hours of sleep is not optional — it's the engine that makes all of it work.</strong> In bed by 10:30pm every night. No screens 30 minutes before bed. Your muscles grow during sleep. Your brain consolidates what you studied during sleep. Your body regulates hormones during sleep. Cutting sleep to fit more in is like draining the gas tank to make the car lighter. It doesn't work.</div>

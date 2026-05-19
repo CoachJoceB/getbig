@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Built Different — Your 8-Week Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #05050a;
+  --s1: #0e0e18;
+  --s2: #141420;
+  --border: #1f1f30;
+  --text: #f0ece4;
+  --muted: #4a4a6a;
+  --gold: #f5c842;
+  --gold2: #e8a020;
+  --blue: #4f9cf0;
+  --green: #3dd68c;
+  --red: #f05050;
+  --purple: #9b6dff;
+}
+
+body {
+font-family: ‘Syne’, sans-serif;
+background: var(–bg);
+color: var(–text);
+min-height: 100vh;
+padding-bottom: 60px;
+overflow-x: hidden;
+}
+
+/* ─── HEADER ─── */
+.hdr {
+position: relative;
+padding: 40px 20px 32px;
+text-align: center;
+overflow: hidden;
+}
+.hdr-bg {
+position: absolute; inset: 0;
+background:
+radial-gradient(ellipse at 20% 50%, #f5c84212 0%, transparent 55%),
+radial-gradient(ellipse at 80% 20%, #4f9cf010 0%, transparent 55%),
+linear-gradient(180deg, #0e0e18 0%, #05050a 100%);
+}
+.hdr-grid {
+position: absolute; inset: 0;
+background-image: linear-gradient(var(–border) 1px, transparent 1px), linear-gradient(90deg, var(–border) 1px, transparent 1px);
+background-size: 40px 40px;
+opacity: 0.3;
+mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
+}
+.hdr-content { position: relative; }
+.eyebrow {
+display: inline-flex; align-items: center; gap: 8px;
+background: #f5c84215; border: 1px solid #f5c84240;
+border-radius: 30px; padding: 4px 14px;
+font-family: ‘DM Mono’, monospace; font-size: 10px;
+color: var(–gold); letter-spacing: 3px; text-transform: uppercase;
+margin-bottom: 16px;
+}
+.eyebrow::before { content: ‘’; width: 6px; height: 6px; border-radius: 50%; background: var(–gold); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hdr h1 {
+font-family: ‘Archivo Black’, sans-serif;
+font-size: clamp(42px, 11vw, 72px);
+line-height: 0.9;
+letter-spacing: -2px;
+margin-bottom: 4px;
+}
+.hdr h1 span { color: var(–gold); }
+.hdr-sub {
+font-size: 13px; color: #888; margin-top: 12px;
+line-height: 1.6; font-weight: 400;
+}
+.stats-strip {
+display: flex; justify-content: center; gap: 6px;
+margin-top: 16px; flex-wrap: wrap;
+}
+.stat-pill {
+background: var(–s1); border: 1px solid var(–border);
+border-radius: 30px; padding: 5px 12px;
+font-family: ‘DM Mono’, monospace; font-size: 11px;
+color: #aaa;
+}
+.stat-pill strong { color: var(–gold); }
+
+/* ─── REALITY CHECK ─── */
+.reality {
+margin: 0 16px 0;
+background: linear-gradient(135deg, #1a1506, #0e0e18);
+border: 1px solid #f5c84230;
+border-left: 3px solid var(–gold);
+border-radius: 14px;
+padding: 16px;
+font-size: 13px;
+color: #ccc;
+line-height: 1.75;
+}
+.reality strong { color: var(–gold); }
+
+/* ─── TABS ─── */
+.tab-wrap { margin: 16px 16px 0; }
+.tab-bar {
+display: flex; background: var(–s1);
+border: 1px solid var(–border);
+border-radius: 14px; padding: 4px; gap: 4px;
+overflow-x: auto; scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+flex: 1; min-width: max-content;
+padding: 10px 12px; border-radius: 10px;
+border: none; background: transparent;
+color: var(–muted); font-family: ‘Syne’, sans-serif;
+font-size: 11px; font-weight: 700;
+letter-spacing: 0.5px; text-transform: uppercase;
+cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.tab-btn.active { background: var(–gold); color: #000; }
+
+/* ─── PANELS ─── */
+.panel { display: none; padding: 16px; }
+.panel.active { display: block; }
+.sec-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 10px; letter-spacing: 3px;
+text-transform: uppercase; color: var(–muted);
+margin-bottom: 12px;
+}
+
+/* ─── MACRO BAR ─── */
+.macro-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+.macro-card {
+background: var(–s1); border: 1px solid var(–border);
+border-radius: 14px; padding: 14px 10px; text-align: center;
+}
+.macro-val { font-family: ‘Archivo Black’, sans-serif; font-size: 22px; color: var(–gold); }
+.macro-lbl { font-size: 10px; color: var(–muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ─── SCHEDULE GRID ─── */
+.week-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.day-block {
+background: var(–s1); border: 1px solid var(–border);
+border-radius: 14px; overflow: hidden;
+}
+.day-head {
+display: flex; align-items: center; gap: 12px;
+padding: 12px 16px; cursor: pointer;
+}
+.day-name-box {
+width: 44px; height: 44px; border-radius: 10px;
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+flex-shrink: 0;
+font-family: ‘DM Mono’, monospace;
+}
+.day-name { font-size: 10px; font-weight: 500; }
+.day-short { font-size: 14px; font-weight: 700; }
+.day-info { flex: 1; }
+.day-title { font-size: 13px; font-weight: 700; }
+.day-sub { font-size: 11px; color: var(–muted); margin-top: 2px; }
+.day-arrow { color: var(–gold); font-size: 18px; font-weight: 700; transition: transform .2s; flex-shrink: 0; }
+.day-arrow.open { transform: rotate(45deg); }
+.day-body { display: none; border-top: 1px solid var(–border); }
+.day-body.open { display: block; }
+.time-slot {
+display: flex; gap: 12px; padding: 10px 16px;
+border-bottom: 1px solid #0d0d18; align-items: flex-start;
+}
+.time-slot:last-child { border-bottom: none; }
+.slot-time {
+font-family: ‘DM Mono’, monospace; font-size: 10px;
+color: var(–muted); white-space: nowrap;
+min-width: 52px; padding-top: 2px;
+}
+.slot-content { flex: 1; }
+.slot-label { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.slot-detail { font-size: 12px; color: #888; line-height: 1.55; }
+.slot-tag {
+display: inline-block; border-radius: 6px;
+padding: 2px 8px; font-size: 10px; font-weight: 700;
+margin-top: 4px; font-family: ‘DM Mono’, monospace;
+}
+
+/* ─── NUTRITION ─── */
+.meal-card {
+background: var(–s1); border: 1px solid var(–border);
+border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
+}
+.meal-head {
+display: flex; justify-content: space-between;
+align-items: flex-start; margin-bottom: 10px;
+}
+.meal-name { font-size: 13px; font-weight: 700; }
+.meal-time { font-family: ‘DM Mono’, monospace; font-size: 10px; color: var(–muted); margin-top: 2px; }
+.ptag {
+border-radius: 20px; padding: 3px 10px;
+font-size: 10px; font-weight: 700;
+font-family: ‘DM Mono’, monospace; flex-shrink: 0;
+}
+.food-item {
+font-size: 12px; color: #999;
+padding-left: 12px; border-left: 2px solid var(–border);
+margin-bottom: 5px; line-height: 1.5;
+}
+.food-item:last-child { margin-bottom: 0; }
+.food-note { font-size: 11px; color: var(–muted); margin-top: 8px; font-style: italic; }
+
+.totals-box {
+background: linear-gradient(135deg, #0d1a0a, var(–s1));
+border: 1px solid #2a3a20; border-radius: 14px;
+padding: 16px; margin-top: 6px;
+}
+.tot-row {
+display: flex; justify-content: space-between;
+font-size: 13px; color: #888; padding: 7px 0;
+border-bottom: 1px solid #1a2a14;
+}
+.tot-row:last-of-type { border-bottom: none; }
+.tot-final {
+display: flex; justify-content: space-between;
+padding-top: 10px; margin-top: 6px;
+border-top: 2px solid #2a3a20;
+}
+
+/* ─── WEIGHTS ─── */
+.w-card {
+background: var(–s1); border: 1px solid var(–border);
+border-radius: 16px; overflow: hidden; margin-bottom: 10px;
+}
+.w-head {
+padding: 14px 16px; display: flex;
+justify-content: space-between; align-items: center;
+cursor: pointer;
+}
+.w-title { font-size: 14px; font-weight: 700; }
+.w-sub { font-size: 11px; color: var(–muted); margin-top: 2px; }
+.w-arrow { font-size: 20px; font-weight: 700; color: var(–gold); transition: transform .2s; line-height: 1; }
+.w-arrow.open { transform: rotate(45deg); }
+.w-body { display: none; border-top: 1px solid var(–border); }
+.w-body.open { display: block; }
+.ex-row {
+display: flex; justify-content: space-between;
+padding: 11px 16px; border-bottom: 1px solid #0d0d18;
+font-size: 13px; align-items: flex-start;
+}
+.ex-row:last-of-type { border-bottom: none; }
+.ex-left { flex: 1; }
+.ex-name { color: #ddd; font-weight: 600; }
+.ex-note { font-size: 11px; color: var(–muted); margin-top: 3px; }
+.ex-sets { color: var(–gold); font-weight: 700; white-space: nowrap; margin-left: 12px; font-family: ‘DM Mono’, monospace; font-size: 12px; }
+.ex-bar { padding: 10px 16px; background: #0a0a14; font-size: 11px; color: #333; border-top: 1px solid var(–border); }
+
+/* ─── MINDSET / LIFE ─── */
+.pillar-card {
+border-radius: 16px; padding: 18px;
+margin-bottom: 10px; position: relative; overflow: hidden;
+}
+.pillar-icon { font-size: 26px; margin-bottom: 10px; }
+.pillar-title { font-family: ‘Archivo Black’, sans-serif; font-size: 17px; letter-spacing: -0.5px; margin-bottom: 8px; }
+.pillar-text { font-size: 13px; color: #aaa; line-height: 1.8; }
+.pillar-text strong { color: var(–text); }
+
+/* ─── PROGRESS ─── */
+.milestone-row {
+display: flex; gap: 12px; align-items: flex-start;
+margin-bottom: 12px;
+}
+.milestone-row:last-child { margin-bottom: 0; }
+.m-tag {
+border-radius: 8px; padding: 4px 9px;
+font-size: 10px; font-weight: 700;
+font-family: ‘DM Mono’, monospace;
+white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+}
+.m-text { font-size: 13px; color: #999; line-height: 1.65; }
+
+/* ─── CLOSER ─── */
+.closer {
+margin: 0 16px;
+background: linear-gradient(135deg, #141408, #0e0e18);
+border: 1px solid #f5c84222;
+border-radius: 20px; padding: 24px 20px;
+text-align: center; position: relative; overflow: hidden;
+}
+.closer::before {
+content: ‘’;
+position: absolute; top: -40px; left: 50%;
+transform: translateX(-50%);
+width: 200px; height: 200px;
+background: radial-gradient(circle, #f5c84215, transparent 70%);
+pointer-events: none;
+}
+.closer-title {
+font-family: ‘Archivo Black’, sans-serif;
+font-size: 26px; letter-spacing: -1px;
+line-height: 1.1; margin-bottom: 12px;
+position: relative;
+}
+.closer-text { font-size: 13px; color: #888; line-height: 1.85; position: relative; }
+
+.warn-box {
+background: #1a0808; border: 1px solid #f0505033;
+border-left: 3px solid var(–red);
+border-radius: 12px; padding: 14px 16px;
+margin-bottom: 14px; font-size: 13px;
+color: #ccc; line-height: 1.7;
+}
+.warn-box strong { color: var(–red); }
+.info-box {
+background: linear-gradient(135deg, #0d1a0a, var(–s1));
+border: 1px solid #2a3a20;
+border-radius: 14px; padding: 16px;
+}
+.divider { height: 1px; background: var(–border); margin: 20px 0; }
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<div class="hdr">
+  <div class="hdr-bg"></div>
+  <div class="hdr-grid"></div>
+  <div class="hdr-content">
+    <div class="eyebrow">Your 8-Week Blueprint</div>
+    <h1>BUILT<br><span>DIFFERENT</span></h1>
+    <p class="hdr-sub">15 · 140 lbs · 5'11 · Basketball · Business · Faith<br>This plan covers all of it.</p>
+    <div class="stats-strip">
+      <div class="stat-pill">Goal: <strong>+10 lbs</strong></div>
+      <div class="stat-pill">Calories: <strong>3,200/day</strong></div>
+      <div class="stat-pill">Protein: <strong>150g/day</strong></div>
+      <div class="stat-pill">Timeline: <strong>8 weeks</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- REALITY CHECK -->
+
+<div class="reality" style="margin-top:16px;">
+  <strong>⚡ Real talk about the 10-pound goal:</strong> Gaining 10 lbs of <em>pure muscle</em> in 8 weeks isn't realistic for anyone on the planet — but <strong>10 lbs of total weight?</strong> That's absolutely doable for a 15-year-old with your activity level. Expect 5–6 lbs of muscle, the rest being healthy weight from stored carbs and water in your muscles. You'll be noticeably bigger, stronger, and your game will show it. That's the real win.
+</div>
+
+<!-- TABS -->
+
+<div class="tab-wrap">
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('schedule',this)">📅 Schedule</button>
+    <button class="tab-btn" onclick="switchTab('nutrition',this)">🍽️ Food</button>
+    <button class="tab-btn" onclick="switchTab('weights',this)">🏋️ Weights</button>
+    <button class="tab-btn" onclick="switchTab('life',this)">🧠 The Full You</button>
+  </div>
+</div>
+
+<!-- ═══ SCHEDULE PANEL ═══ -->
+
+<div class="panel active" id="panel-schedule">
+  <div class="macro-row">
+    <div class="macro-card"><div class="macro-val">3,200</div><div class="macro-lbl">Calories</div></div>
+    <div class="macro-card"><div class="macro-val">150g</div><div class="macro-lbl">Protein</div></div>
+    <div class="macro-card"><div class="macro-val">+10</div><div class="macro-lbl">Target lbs</div></div>
+  </div>
+
+  <div class="sec-label">Your Week — Tap Any Day</div>
+
+  <!-- MONDAY -->
+
+  <div class="week-grid">
+    <div class="day-block">
+      <div class="day-head" onclick="toggleDay(this)">
+        <div class="day-name-box" style="background:#4f9cf015;border:1px solid #4f9cf040">
+          <div class="day-name" style="color:#4f9cf0">MON</div>
+          <div class="day-short" style="color:#4f9cf0">M</div>
+        </div>
+        <div class="day-info">
+          <div class="day-title">Heavy Day — 3 Sessions</div>
+          <div class="day-sub">Fitness · Basketball · Group Training</div>
+        </div>
+        <div class="day-arrow">+</div>
+      </div>
+      <div class="day-body">
+        <div class="time-slot">
+          <div class="slot-time">Morning</div>
+          <div class="slot-content">
+            <div class="slot-label">🌅 Wake + Water + Devotional</div>
+            <div class="slot-detail">Start your day here. 10 minutes of prayer or reading before anything else. Set the tone — everything else flows from this.</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">Breakfast</div>
+          <div class="slot-content">
+            <div class="slot-label">🍳 Big Breakfast — Non-Negotiable</div>
+            <div class="slot-detail">You're growing. You eat to grow. See the Food tab.</div>
+            <div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~60g protein</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">10:00am</div>
+          <div class="slot-content">
+            <div class="slot-label">🏋️ Fitness Class — 45 Min</div>
+            <div class="slot-detail">Go hard. Don't hold back for tonight.</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">~11am</div>
+          <div class="slot-content">
+            <div class="slot-label">🥜 Recovery Snack — Immediately</div>
+            <div class="slot-detail">Hit protein within 30 min of finishing. Non-negotiable on gain days.</div>
+            <div class="slot-tag" style="background:#3dd68c15;color:var(--green)">~30g protein</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">Afternoon</div>
+          <div class="slot-content">
+            <div class="slot-label">📚 School / Business Work</div>
+            <div class="slot-detail">Handle your academics and check your reselling inventory. Protect this time — your business is part of the plan too.</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">Lunch</div>
+          <div class="slot-content">
+            <div class="slot-label">🍗 Lunch — Big</div>
+            <div class="slot-detail">Protein and carbs. You need fuel for afternoon basketball.</div>
+            <div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~50g protein</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">Park</div>
+          <div class="slot-content">
+            <div class="slot-label">🏀 Basketball — 1.5 hrs</div>
+            <div class="slot-detail">Play hard. Compete. Bring water.</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">~5:30pm</div>
+          <div class="slot-content">
+            <div class="slot-label">⚡ Pre-Training Snack</div>
+            <div class="slot-detail">Light but enough to fuel 7:45pm group training.</div>
+            <div class="slot-tag" style="background:#3dd68c15;color:var(--green)">~20g protein</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">Dinner</div>
+          <div class="slot-content">
+            <div class="slot-label">🍽️ Dinner — Before 7pm</div>
+            <div class="slot-detail">Eat before group training. Solid meal. Protein + carbs + veggies.</div>
+            <div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~50g protein</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">7:45–9pm</div>
+          <div class="slot-content">
+            <div class="slot-label">🏀 Group Basketball Training</div>
+            <div class="slot-detail">This IS your workout tonight. <strong style="color:var(--red)">No weights after this.</strong> You've done fitness class, basketball, and group training. Rest is growth.</div>
+            <div class="slot-tag" style="background:#f0505015;color:var(--red)">No lifting tonight — recover</div>
+          </div>
+        </div>
+        <div class="time-slot">
+          <div class="slot-time">~9pm</div>
+          <div class="slot-content">
+            <div class="slot-label">🥚 Post-Training Protein + Bed Prep</div>
+            <div class="slot-detail">Quick protein snack. Shower. In bed by 10:30pm. Monday is your biggest day — sleep is how you recover from it.</div>
+            <div class="slot-tag" style="background:#3dd68c15;color:var(--green)">~15g protein</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+```
+<!-- TUESDAY -->
+<div class="day-block">
+  <div class="day-head" onclick="toggleDay(this)">
+    <div class="day-name-box" style="background:#f5c84215;border:1px solid #f5c84240">
+      <div class="day-name" style="color:var(--gold)">TUE</div>
+      <div class="day-short" style="color:var(--gold)">T</div>
+    </div>
+    <div class="day-info">
+      <div class="day-title">Weights Day + Test Prep</div>
+      <div class="day-sub">Fitness · Basketball · ACT/SAT · Lift</div>
+    </div>
+    <div class="day-arrow">+</div>
+  </div>
+  <div class="day-body">
+    <div class="time-slot">
+      <div class="slot-time">Morning</div>
+      <div class="slot-content"><div class="slot-label">🌅 Devotional + Breakfast</div><div class="slot-detail">Same morning routine. Lock it in every day — consistency in your spirit carries into consistency in everything else.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">10:00am</div>
+      <div class="slot-content"><div class="slot-label">🏋️ Fitness Class</div><div class="slot-detail">45 minutes. Do the work.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">~11am</div>
+      <div class="slot-content"><div class="slot-label">🥜 Recovery Snack</div><div class="slot-detail">Protein within 30 min. Every time, no exceptions.</div><div class="slot-tag" style="background:#3dd68c15;color:var(--green)">~30g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Lunch</div>
+      <div class="slot-content"><div class="slot-label">🍗 Big Lunch</div><div class="slot-detail">Eat well. Brain needs fuel for test prep tonight too.</div><div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~50g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Afternoon</div>
+      <div class="slot-content"><div class="slot-label">🏀 Basketball + Business</div><div class="slot-detail">Runs at the park. Then block 30–45 min for your reselling business — sourcing, listing, shipping, whatever needs doing.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">5:00pm</div>
+      <div class="slot-content"><div class="slot-label">🏋️ Weights — PUSH Day (35–40 min)</div><div class="slot-detail">Get this done before ACT/SAT prep. Chest, shoulders, triceps. See the Weights tab.</div><div class="slot-tag" style="background:#9b6dff15;color:var(--purple)">Push Night</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Dinner</div>
+      <div class="slot-content"><div class="slot-label">🍽️ Dinner — Eat Before 6pm</div><div class="slot-detail">Full meal before ACT/SAT. Your brain cannot focus on an empty stomach.</div><div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~50g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">6–8pm</div>
+      <div class="slot-content"><div class="slot-label">📝 ACT/SAT Prep</div><div class="slot-detail">Show up mentally present. This is an investment in your future — same as the gym. <strong style="color:#ddd">Treat it like training.</strong> Do the reps.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">~8pm</div>
+      <div class="slot-content"><div class="slot-label">🥚 Overnight Protein + Wind Down</div><div class="slot-detail">Quick snack. No more screens after 9pm. In bed by 10:30pm.</div><div class="slot-tag" style="background:#3dd68c15;color:var(--green)">~15g protein</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WEDNESDAY -->
+<div class="day-block">
+  <div class="day-head" onclick="toggleDay(this)">
+    <div class="day-name-box" style="background:#4f9cf015;border:1px solid #4f9cf040">
+      <div class="day-name" style="color:#4f9cf0">WED</div>
+      <div class="day-short" style="color:#4f9cf0">W</div>
+    </div>
+    <div class="day-info">
+      <div class="day-title">Heavy Day — 3 Sessions</div>
+      <div class="day-sub">Fitness · Basketball · Group Training</div>
+    </div>
+    <div class="day-arrow">+</div>
+  </div>
+  <div class="day-body">
+    <div class="time-slot">
+      <div class="slot-time">Morning</div>
+      <div class="slot-content"><div class="slot-label">🌅 Devotional + Breakfast</div><div class="slot-detail">Your anchor. Every morning. Don't skip it on busy days — especially on busy days.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">10:00am</div>
+      <div class="slot-content"><div class="slot-label">🏋️ Fitness Class</div><div class="slot-detail">Give it everything.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">~11am</div>
+      <div class="slot-content"><div class="slot-label">🥜 Recovery Snack</div><div class="slot-detail">Protein. 30-minute window. Get it.</div><div class="slot-tag" style="background:#3dd68c15;color:var(--green)">~30g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Lunch</div>
+      <div class="slot-content"><div class="slot-label">🍗 Big Lunch + Business Block</div><div class="slot-detail">Eat well. After lunch — 30–45 min on your business. Check orders, relist, source. Treat it like a job because it is.</div><div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~50g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Afternoon</div>
+      <div class="slot-content"><div class="slot-label">🏀 Basketball at the Park</div><div class="slot-detail">Compete. This is skill work and conditioning at the same time.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">~5:30pm</div>
+      <div class="slot-content"><div class="slot-label">⚡ Snack + Dinner Early</div><div class="slot-detail">Eat a full dinner before 7pm. Group training is at 7:45. You need fuel in your system before you get there.</div><div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~50g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">7:45–9pm</div>
+      <div class="slot-content"><div class="slot-label">🏀 Group Basketball Training</div><div class="slot-detail">This is your workout. <strong style="color:var(--red)">No weights tonight</strong> — you've done enough. Rest and protein rebuild you. Sleep is the workout finishing.</div><div class="slot-tag" style="background:#f0505015;color:var(--red)">No lifting tonight</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">~9:15pm</div>
+      <div class="slot-content"><div class="slot-label">🥚 Protein + Bed</div><div class="slot-detail">Snack, shower, sleep. In bed by 10:30pm. Wednesday is as hard as Monday. Protect your sleep.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- THURSDAY -->
+<div class="day-block">
+  <div class="day-head" onclick="toggleDay(this)">
+    <div class="day-name-box" style="background:#f5c84215;border:1px solid #f5c84240">
+      <div class="day-name" style="color:var(--gold)">THU</div>
+      <div class="day-short" style="color:var(--gold)">T</div>
+    </div>
+    <div class="day-info">
+      <div class="day-title">Weights Day + Test Prep</div>
+      <div class="day-sub">Fitness · Basketball · ACT/SAT · Lift</div>
+    </div>
+    <div class="day-arrow">+</div>
+  </div>
+  <div class="day-body">
+    <div class="time-slot">
+      <div class="slot-time">Morning</div>
+      <div class="slot-content"><div class="slot-label">🌅 Devotional + Breakfast</div><div class="slot-detail">Same anchor. Same energy. Every day.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">10:00am</div>
+      <div class="slot-content"><div class="slot-label">🏋️ Fitness Class</div><div class="slot-detail">45 minutes of real work.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">~11am</div>
+      <div class="slot-content"><div class="slot-label">🥜 Recovery Snack</div><div class="slot-detail">Protein, 30 minutes, every time.</div><div class="slot-tag" style="background:#3dd68c15;color:var(--green)">~30g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Lunch + Afternoon</div>
+      <div class="slot-content"><div class="slot-label">🍗 Lunch → Basketball → Business</div><div class="slot-detail">Same rhythm. Eat, hoop, handle business.</div><div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~50g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">5:00pm</div>
+      <div class="slot-content"><div class="slot-label">🏋️ Weights — PULL Day (35–40 min)</div><div class="slot-detail">Back and biceps. Done before dinner, done before test prep. See the Weights tab.</div><div class="slot-tag" style="background:#9b6dff15;color:var(--purple)">Pull Night</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Dinner</div>
+      <div class="slot-content"><div class="slot-label">🍽️ Dinner — Before 6pm</div><div class="slot-detail">Full meal. Brain food for prep. Protein, carbs, vegetables.</div><div class="slot-tag" style="background:#f5c84215;color:var(--gold)">~50g protein</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">6–8pm</div>
+      <div class="slot-content"><div class="slot-label">📝 ACT/SAT Prep</div><div class="slot-detail">Show up mentally locked in. Your test score is part of your future just like your game. Put in the reps here too.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">~8pm</div>
+      <div class="slot-content"><div class="slot-label">🥚 Overnight Protein + Wind Down</div><div class="slot-detail">Snack, no screens, bed by 10:30.</div><div class="slot-tag" style="background:#3dd68c15;color:var(--green)">~15g protein</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FRIDAY -->
+<div class="day-block">
+  <div class="day-head" onclick="toggleDay(this)">
+    <div class="day-name-box" style="background:#3dd68c15;border:1px solid #3dd68c40">
+      <div class="day-name" style="color:var(--green)">FRI</div>
+      <div class="day-short" style="color:var(--green)">F</div>
+    </div>
+    <div class="day-info">
+      <div class="day-title">Weights + Free Evening</div>
+      <div class="day-sub">Fitness · Basketball · Legs</div>
+    </div>
+    <div class="day-arrow">+</div>
+  </div>
+  <div class="day-body">
+    <div class="time-slot">
+      <div class="slot-time">Morning</div>
+      <div class="slot-content"><div class="slot-label">🌅 Devotional + Big Breakfast</div><div class="slot-detail">End of the school week. Start it the same way you started Monday.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">10:00am</div>
+      <div class="slot-content"><div class="slot-label">🏋️ Fitness Class</div><div class="slot-detail">Go hard — free night tonight.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Afternoon</div>
+      <div class="slot-content"><div class="slot-label">🏀 Basketball + Business</div><div class="slot-detail">Run your games. Then handle your business. Friday can be a good shipping day if you have orders.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Evening</div>
+      <div class="slot-content"><div class="slot-label">🏋️ Weights — LEGS + CORE (40 min)</div><div class="slot-detail">No rush tonight. Lock in on legs and core. This is the session most people skip — don't be that person.</div><div class="slot-tag" style="background:#9b6dff15;color:var(--purple)">Legs Night</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Night</div>
+      <div class="slot-content"><div class="slot-label">🥚 Protein + Recovery</div><div class="slot-detail">Eat your overnight protein. Rest well — you've earned it. Weekend is active recovery.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SAT -->
+<div class="day-block">
+  <div class="day-head" onclick="toggleDay(this)">
+    <div class="day-name-box" style="background:#9b6dff15;border:1px solid #9b6dff40">
+      <div class="day-name" style="color:var(--purple)">SAT</div>
+      <div class="day-short" style="color:var(--purple)">S</div>
+    </div>
+    <div class="day-info">
+      <div class="day-title">Business + Faith Day</div>
+      <div class="day-sub">Active Recovery · Business Sprint · Faith</div>
+    </div>
+    <div class="day-arrow">+</div>
+  </div>
+  <div class="day-body">
+    <div class="time-slot">
+      <div class="slot-time">Morning</div>
+      <div class="slot-content"><div class="slot-label">🙏 Longer Devotional + Journaling</div><div class="slot-detail">You have more time today. Spend more of it here. Journal what you're grateful for, what you're building toward, what you're asking for. This is where your vision gets clear.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Mid-Morning</div>
+      <div class="slot-content"><div class="slot-label">💼 Business Deep Work — 1–2 hrs</div><div class="slot-detail">Saturday is your best business day. Restock, source, optimize listings, plan the next week. Treat it like a real business session — phone on Do Not Disturb, focused.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Afternoon</div>
+      <div class="slot-content"><div class="slot-label">🏀 Light Basketball or Walk</div><div class="slot-detail">Active recovery. Don't sit all day — move your body. But this isn't a hard session. Just stay loose.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Evening</div>
+      <div class="slot-content"><div class="slot-label">🍽️ Biggest Eating Day</div><div class="slot-detail">Saturday you eat the most. Load up. Your muscles are rebuilding from the whole week — feed them well.</div><div class="slot-tag" style="background:#f5c84215;color:var(--gold)">Eat everything on the plan today</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SUN -->
+<div class="day-block">
+  <div class="day-head" onclick="toggleDay(this)">
+    <div class="day-name-box" style="background:#3dd68c15;border:1px solid #3dd68c40">
+      <div class="day-name" style="color:var(--green)">SUN</div>
+      <div class="day-short" style="color:var(--green)">S</div>
+    </div>
+    <div class="day-info">
+      <div class="day-title">Rest + Recharge Day</div>
+      <div class="day-sub">Church · Rest · Prep for the Week</div>
+    </div>
+    <div class="day-arrow">+</div>
+  </div>
+  <div class="day-body">
+    <div class="time-slot">
+      <div class="slot-time">Morning</div>
+      <div class="slot-content"><div class="slot-label">⛪ Church / Faith Community</div><div class="slot-detail">Show up. Be present. Building your faith isn't just personal quiet time — it's community too.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Afternoon</div>
+      <div class="slot-content"><div class="slot-label">😴 Genuine Rest</div><div class="slot-detail">No training. No business pressure. Rest isn't lazy — it's strategic. Your body grows on rest days, not workout days. Let it do the work.</div></div>
+    </div>
+    <div class="time-slot">
+      <div class="slot-time">Evening</div>
+      <div class="slot-content"><div class="slot-label">📋 Plan Your Week</div><div class="slot-detail">Spend 15 minutes Sunday night looking at the week ahead. What needs to happen in your business? What are your test prep goals? What are you going to focus on spiritually? <strong style="color:#ddd">Winners plan. Everyone else reacts.</strong></div></div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ═══ NUTRITION PANEL ═══ -->
+
+<div class="panel" id="panel-nutrition">
+  <div class="macro-row">
+    <div class="macro-card"><div class="macro-val">3,200</div><div class="macro-lbl">Daily kcal</div></div>
+    <div class="macro-card"><div class="macro-val">150g</div><div class="macro-lbl">Protein</div></div>
+    <div class="macro-card"><div class="macro-val">350g</div><div class="macro-lbl">Carbs</div></div>
+  </div>
+
+  <div class="reality" style="margin-bottom:16px;margin-left:0;margin-right:0;">
+    <strong>⚡ Your #1 challenge is eating enough.</strong> At 5'11 with everything you're doing, most guys your size eat way too little and then wonder why they're not growing. You have to be intentional about getting these calories in. Gaining weight is a discipline just like losing it.
+  </div>
+
+  <div class="sec-label">What You Eat Every Day</div>
+
+  <div class="meal-card">
+    <div class="meal-head">
+      <div><div class="meal-name">🍳 Breakfast — Biggest Meal</div><div class="meal-time">First thing after devotional</div></div>
+      <div class="ptag" style="background:#f5c84215;color:var(--gold)">~60g</div>
+    </div>
+    <div class="food-item">5 scrambled eggs + 1–2 slices cheese (splash of milk in the eggs)</div>
+    <div class="food-item">2 slices toast with peanut butter</div>
+    <div class="food-item">1 cup Greek yogurt</div>
+    <div class="food-item">Piece of fruit if available</div>
+    <div class="food-note">This meal sets the tone. Don't rush it. Eat it all.</div>
+  </div>
+
+  <div class="meal-card">
+    <div class="meal-head">
+      <div><div class="meal-name">🥜 Post-Gym Snack</div><div class="meal-time">Within 30 min of finishing class</div></div>
+      <div class="ptag" style="background:#3dd68c15;color:var(--green)">~30g</div>
+    </div>
+    <div class="food-item">1 can tuna + saltines</div>
+    <div class="food-item">½ cup Greek yogurt</div>
+    <div class="food-note">This window is real. Miss it and you slow down muscle building. Hit it every single day.</div>
+  </div>
+
+  <div class="meal-card">
+    <div class="meal-head">
+      <div><div class="meal-name">🍗 Lunch — Don't Shortchange It</div><div class="meal-time">Before basketball</div></div>
+      <div class="ptag" style="background:#f5c84215;color:var(--gold)">~50g</div>
+    </div>
+    <div class="food-item">6oz chicken breast or ground turkey</div>
+    <div class="food-item">¾ cup pasta or 2 slices bread</div>
+    <div class="food-item">1 cup broccoli or green beans</div>
+    <div class="food-note">Bigger carbs here than the 13-year-old plan — you need them to perform AND grow.</div>
+  </div>
+
+  <div class="meal-card">
+    <div class="meal-head">
+      <div><div class="meal-name">⚡ Pre-Basketball or Bridge Snack</div><div class="meal-time">Between sessions</div></div>
+      <div class="ptag" style="background:#3dd68c15;color:var(--green)">~20g</div>
+    </div>
+    <div class="food-item">2 tbsp peanut butter on 2 slices bread</div>
+    <div class="food-item">½ cup Greek yogurt</div>
+    <div class="food-note">This snack alone adds 400+ calories to your day. You need that.</div>
+  </div>
+
+  <div class="meal-card">
+    <div class="meal-head">
+      <div><div class="meal-name">🍽️ Dinner — Protein First</div><div class="meal-time">Before evening commitments</div></div>
+      <div class="ptag" style="background:#f5c84215;color:var(--gold)">~50g</div>
+    </div>
+    <div class="food-item">6–7oz chicken breast, turkey, or wings</div>
+    <div class="food-item">¾ cup pasta or rice equivalent in bread</div>
+    <div class="food-item">1.5 cups broccoli or green beans</div>
+    <div class="food-item">Use milk in cooking — pasta, eggs, whatever</div>
+  </div>
+
+  <div class="meal-card">
+    <div class="meal-head">
+      <div><div class="meal-name">🥚 Overnight Protein — Every Night</div><div class="meal-time">Before bed, after weights or training</div></div>
+      <div class="ptag" style="background:#3dd68c15;color:var(--green)">~15g</div>
+    </div>
+    <div class="food-item">2 hard boiled eggs OR ½ cup Greek yogurt</div>
+    <div class="food-item">On heavy days — add a spoonful of peanut butter too</div>
+    <div class="food-note">Muscle gets built while you sleep. This snack feeds that process all night.</div>
+  </div>
+
+  <div class="totals-box">
+    <div class="sec-label" style="color:var(--green);margin-bottom:10px;">Your Daily Protein Total</div>
+    <div class="tot-row"><span>🍳 Breakfast</span><span style="color:var(--green);font-weight:700">~60g</span></div>
+    <div class="tot-row"><span>🥜 Post-Gym</span><span style="color:var(--green);font-weight:700">~30g</span></div>
+    <div class="tot-row"><span>🍗 Lunch</span><span style="color:var(--green);font-weight:700">~50g</span></div>
+    <div class="tot-row"><span>⚡ Snack</span><span style="color:var(--green);font-weight:700">~20g</span></div>
+    <div class="tot-row"><span>🍽️ Dinner</span><span style="color:var(--green);font-weight:700">~50g</span></div>
+    <div class="tot-row"><span>🥚 Overnight</span><span style="color:var(--green);font-weight:700">~15g</span></div>
+    <div class="tot-final">
+      <span style="font-weight:700;font-size:14px;">TOTAL</span>
+      <span style="color:var(--green);font-weight:700;font-size:16px">~225g ✅</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6">Target is 150g. You're clearing it every day. The extra goes to fuel your activity. At 5'11 and growing, your body will use all of it.</div>
+  </div>
+</div>
+
+<!-- ═══ WEIGHTS PANEL ═══ -->
+
+<div class="panel" id="panel-weights">
+  <div class="warn-box">
+    <strong>⚠️ Mon and Wed — no weights.</strong> Those nights you have group basketball training 7:45–9pm on top of everything else. That IS your workout. Adding weights after a day like that leads to overtraining, not growth. The discipline is knowing when NOT to lift.
+  </div>
+
+  <div class="sec-label">Your 3-Night Rotation — Tue, Thu, Fri</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;">
+    <div style="background:var(--s1);border:1px solid #4f9cf040;border-radius:12px;padding:12px;text-align:center">
+      <div style="font-size:10px;color:#4f9cf0;font-weight:700;letter-spacing:1px;margin-bottom:4px">TUE</div>
+      <div style="font-size:14px;font-weight:700">💥 Push</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px">Chest · Shoulders · Tris</div>
+    </div>
+    <div style="background:var(--s1);border:1px solid #f5c84240;border-radius:12px;padding:12px;text-align:center">
+      <div style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:4px">THU</div>
+      <div style="font-size:14px;font-weight:700">💪 Pull</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px">Back · Biceps</div>
+    </div>
+    <div style="background:var(--s1);border:1px solid #9b6dff40;border-radius:12px;padding:12px;text-align:center">
+      <div style="font-size:10px;color:var(--purple);font-weight:700;letter-spacing:1px;margin-bottom:4px">FRI</div>
+      <div style="font-size:14px;font-weight:700">🦵 Legs</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px">Quads · Hams · Core</div>
+    </div>
+  </div>
+
+  <!-- PUSH -->
+
+  <div class="w-card">
+    <div class="w-head" onclick="toggleW(this)">
+      <div><div class="w-title">💥 Tuesday — Push</div><div class="w-sub">Chest, Shoulders, Triceps · ~35 min</div></div>
+      <div class="w-arrow">+</div>
+    </div>
+    <div class="w-body">
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">DB Floor Press</div><div class="ex-note">Dumbbells · Back flat on floor, full press</div></div>
+        <div class="ex-sets">4 × 10–12</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">DB Shoulder Press</div><div class="ex-note">Standing or seated · Slow on the way down</div></div>
+        <div class="ex-sets">4 × 10–12</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Incline Push-ups on Plyo Box</div><div class="ex-note">Feet on box · Deep range of motion</div></div>
+        <div class="ex-sets">3 × 15</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Lateral Raises</div><div class="ex-note">Light dumbbells · Arms parallel to floor · No swinging</div></div>
+        <div class="ex-sets">4 × 15</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Skull Crushers</div><div class="ex-note">Curl bar · Elbows in · Slow and controlled</div></div>
+        <div class="ex-sets">3 × 12</div>
+      </div>
+      <div class="ex-bar">60 sec rest · 4 sets = more volume = more growth · Add 5 lbs when you hit the top rep on all 4 sets</div>
+    </div>
+  </div>
+
+  <!-- PULL -->
+
+  <div class="w-card">
+    <div class="w-head" onclick="toggleW(this)">
+      <div><div class="w-title">💪 Thursday — Pull</div><div class="w-sub">Back, Biceps · ~35 min</div></div>
+      <div class="w-arrow">+</div>
+    </div>
+    <div class="w-body">
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Bent-Over Rows</div><div class="ex-note">Curl bar · Hinge at hips · Pull to belly button · Back flat</div></div>
+        <div class="ex-sets">4 × 10–12</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Single-Arm DB Rows</div><div class="ex-note">Knee on plyo box · Drive elbow to ceiling · Squeeze</div></div>
+        <div class="ex-sets">4 × 10 each</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Band Pull-Aparts</div><div class="ex-note">Arms straight out · Pull band apart to chest · Rear delts and posture</div></div>
+        <div class="ex-sets">3 × 20</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Band Face Pulls</div><div class="ex-note">Anchor band at face height · Pull toward forehead · Keep elbows high</div></div>
+        <div class="ex-sets">3 × 15</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Curl Bar Curls</div><div class="ex-note">Full range · 3 sec down · No swinging · This is where the arms come from</div></div>
+        <div class="ex-sets">4 × 12</div>
+      </div>
+      <div class="ex-bar">Squeeze hard at the top of every pull · The 3-second lowering on curls is the secret most people skip</div>
+    </div>
+  </div>
+
+  <!-- LEGS -->
+
+  <div class="w-card">
+    <div class="w-head" onclick="toggleW(this)">
+      <div><div class="w-title">🦵 Friday — Legs + Core</div><div class="w-sub">Quads, Hamstrings, Abs · ~40 min · Don't skip this</div></div>
+      <div class="w-arrow">+</div>
+    </div>
+    <div class="w-body">
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Goblet Squat</div><div class="ex-note">One dumbbell at chest · Below parallel · Knees track toes</div></div>
+        <div class="ex-sets">4 × 12</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Romanian Deadlift</div><div class="ex-note">Curl bar · Hinge at hips · Feel the hamstring stretch · Back flat always</div></div>
+        <div class="ex-sets">4 × 10</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Bulgarian Split Squat</div><div class="ex-note">Back foot on plyo box · Front foot far out · Dumbbells in hands · This builds your first step</div></div>
+        <div class="ex-sets">3 × 8 each</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Box Jumps</div><div class="ex-note">Plyo box · Explode from the floor · Land soft · Reset and go again</div></div>
+        <div class="ex-sets">3 × 6</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Plank</div><div class="ex-note">Squeeze everything — abs, glutes, fists · No sagging</div></div>
+        <div class="ex-sets">3 × 45 sec</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Bicycle Crunches</div><div class="ex-note">Slow and deliberate · Touch elbow to knee every rep</div></div>
+        <div class="ex-sets">3 × 20</div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-left"><div class="ex-name">Leg Raises</div><div class="ex-note">Floor · Keep lower back pressed down · Control the descent</div></div>
+        <div class="ex-sets">3 × 15</div>
+      </div>
+      <div class="ex-bar">At 5'11, strong legs = faster first step, higher vert, better endurance late in games. This session directly improves your basketball.</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="margin-top:6px">
+    <div class="sec-label" style="color:var(--green);margin-bottom:10px">📈 The Progression System</div>
+    <div style="font-size:13px;color:#aaa;line-height:1.9">
+      <div style="margin-bottom:10px">✅ Hit the <strong style="color:#fff">top rep on all 4 sets</strong> with clean form? Add <strong style="color:var(--green)">5 lbs</strong> next session. That's how you get bigger week by week.</div>
+      <div style="margin-bottom:10px">✅ <strong style="color:#fff">Log every lift in your Notes app.</strong> "RDL — 75 lbs × 10." Do this every night. In 8 weeks you'll have proof of your growth.</div>
+      <div>✅ Tournament week, back-to-back heavy days, body feels broken? <strong style="color:var(--gold)">Skip weights. Sleep extra. Eat more.</strong> Recovery IS the workout.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LIFE PANEL ═══ -->
+
+<div class="panel" id="panel-life">
+
+  <div class="sec-label">You're Building More Than a Body</div>
+
+  <div class="pillar-card" style="background:linear-gradient(135deg,#140e05,var(--s1));border:1px solid #f5c84230">
+    <div class="pillar-icon">🙏</div>
+    <div class="pillar-title" style="color:var(--gold)">Faith First — Every Morning</div>
+    <div class="pillar-text">This isn't decoration in your plan — it's the foundation. Before the gym, before basketball, before your phone: <strong>10 minutes of devotional time every single morning.</strong> Prayer, reading, journaling — whatever your practice is. The days you're tempted to skip it are exactly the days you need it most. A busy schedule isn't a reason to cut it — it's a reason to anchor yourself before the chaos starts.</div>
+  </div>
+
+  <div class="pillar-card" style="background:linear-gradient(135deg,#0a0d1a,var(--s1));border:1px solid #4f9cf030">
+    <div class="pillar-icon">💼</div>
+    <div class="pillar-title" style="color:#4f9cf0">Your Reselling Business — Treat It Like One</div>
+    <div class="pillar-text">You already have something most people your age don't — an income stream you built yourself. Now it's time to be intentional with it. <strong>Block 30–45 minutes every weekday</strong> — same time, same focus. Sourcing, listing, shipping, customer service, tracking what sells. Saturday is your deep work day — 1–2 hours building and planning. Write down your revenue goal for the 8 weeks. <strong>What you measure, you improve.</strong> Treat your business like a job and it'll pay you like one.</div>
+  </div>
+
+  <div class="pillar-card" style="background:linear-gradient(135deg,#0d140a,var(--s1));border:1px solid #3dd68c30">
+    <div class="pillar-icon">📝</div>
+    <div class="pillar-title" style="color:var(--green)">ACT/SAT — This Is Athletic Training Too</div>
+    <div class="pillar-text">You go to group basketball training twice a week because you know reps make you better. <strong>Test prep is the same thing.</strong> Show up to Tuesday and Thursday prep the same way you show up to the gym — ready to work, not just to be there. Eat before you go. Your brain needs fuel. The score you build over these 8 weeks opens doors your game alone can't. Treat it like the investment it is.</div>
+  </div>
+
+  <div class="pillar-card" style="background:linear-gradient(135deg,#140a14,var(--s1));border:1px solid #9b6dff30">
+    <div class="pillar-icon">🏀</div>
+    <div class="pillar-title" style="color:var(--purple)">Basketball — You're Building a Complete Player</div>
+    <div class="pillar-text">At 5'11 and 140 lbs right now, <strong>adding 10 lbs of real muscle will change your game.</strong> You'll be harder to move in the post. Your first step will be more explosive. You'll finish through contact instead of getting knocked off your line. The Bulgarian split squats and box jumps on Fridays are directly for your game — not just aesthetics. Every lift you do is basketball training in disguise.</div>
+  </div>
+
+  <div class="pillar-card" style="background:linear-gradient(135deg,#14100a,var(--s1));border:1px solid #f5c84220">
+    <div class="pillar-icon">😴</div>
+    <div class="pillar-title" style="color:var(--gold)">Sleep — Your Most Powerful Tool</div>
+    <div class="pillar-text">You're growing, training hard, studying, and running a business. <strong>9 hours of sleep is not optional — it's the engine that makes all of it work.</strong> In bed by 10:30pm every night. No screens 30 minutes before bed. Your muscles grow during sleep. Your brain consolidates what you studied during sleep. Your body regulates hormones during sleep. Cutting sleep to fit more in is like draining the gas tank to make the car lighter. It doesn't work.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-label">8-Week Progress Roadmap</div>
+
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:16px">
+    <div class="milestone-row">
+      <div class="m-tag" style="background:#4f9cf015;color:#4f9cf0">Wk 1–2</div>
+      <div class="m-text">You'll start eating more than feels comfortable. That's the point. Strength goes up fast — neural adaptation. Habits locking in.</div>
+    </div>
+    <div class="milestone-row">
+      <div class="m-tag" style="background:#f5c84215;color:var(--gold)">Wk 3–4</div>
+      <div class="m-text">Scale moving. Shoulders and arms visibly fuller. People start noticing before you do. Business and test prep in rhythm.</div>
+    </div>
+    <div class="milestone-row">
+      <div class="m-tag" style="background:#3dd68c15;color:var(--green)">Wk 5–6</div>
+      <div class="m-text">Noticeably heavier and stronger. First step on the court more explosive. Lifts going up every week.</div>
+    </div>
+    <div class="milestone-row">
+      <div class="m-tag" style="background:#9b6dff15;color:var(--purple)">Wk 7–8</div>
+      <div class="m-text">10 lbs gained. Frame filled out. Game elevated. Business growing. Test scores improving. Faith anchored. This is what building yourself looks like.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CLOSER -->
+
+<div class="closer">
+  <div class="closer-title">You're Not Just<br><span style="color:var(--gold)">Building a Body.</span><br>You're Building a Life.</div>
+  <div class="closer-text">
+    Most people your age are focused on one thing at a time. You're building your body, your game, your business, your mind, and your faith — all at the same time. That's not normal. That's special.<br><br>
+    The discipline you build over these 8 weeks doesn't stay in the gym. It shows up in your business. It shows up on your test. It shows up in who you are when things get hard.<br><br>
+    <strong style="color:var(--gold)">Eat. Sleep. Lift. Study. Build. Pray. Repeat.</strong><br><br>
+    <span style="color:#555">The results are already decided — they're waiting for you to show up every day and claim them.</span>
+  </div>
+</div>
+
+<script>
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+}
+function toggleDay(head) {
+  const body = head.nextElementSibling;
+  const arrow = head.querySelector('.day-arrow');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.day-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.day-arrow').forEach(a => a.classList.remove('open'));
+  if (!isOpen) { body.classList.add('open'); arrow.classList.add('open'); }
+}
+function toggleW(head) {
+  const body = head.nextElementSibling;
+  const arrow = head.querySelector('.w-arrow');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.w-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.w-arrow').forEach(a => a.classList.remove('open'));
+  if (!isOpen) { body.classList.add('open'); arrow.classList.add('open'); }
+}
+</script>
+
+</body>
+</html>
